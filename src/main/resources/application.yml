@@ -1,0 +1,19 @@
+server:
+  port: ${APP_PORT:8761}
+spring:
+  application:
+    name: ${APP_NAME:eureka}
+eureka:
+  instance:
+    hostname: ${EUREKA_HOSTNAME:eureka}
+    appname: ${spring.application.name}
+    instance-id: ${spring.application.name}:${EUREKA_HOSTNAME}:${server.port}
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    healthcheck:
+      enabled: true
+    registry-fetch-interval-seconds: 10
+    service-url:
+      defaultZone: ${EUREKA_URL_LIST:http://eureka:8761/eureka/}
+
